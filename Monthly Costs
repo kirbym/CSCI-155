@@ -1,0 +1,36 @@
+// Monthly Costs.cpp : Defines the entry point for the console application.
+/*Write a program that asks the user to enter their monthly costs for 
+each of the following housing related expenses: rent/mortgage, utilities, phone, cable.
+The program should then display the total monthly cost of these expenses, and the total annual cost of these expenses.*/
+
+#include "stdafx.h"
+#include <iostream>
+using namespace std;
+
+
+int main()
+{
+	double rent, utilities, phone, cable, totalMonthlyExpenses, totalAnnualExpenses;
+
+	cout << "Please enter the cost of one month of your rent or mortgage payment,\nutilities, phone bill, and cable bill ";
+	cout << "in the appropriate field.\n\n";
+
+	cout << "How much is one month of your rent or mortgage payment? $";
+	cin >> rent;
+	cout << "\nHow much does one month of utilities cost? $";
+	cin >> utilities;
+	cout << "\nHow much is one month's phone bill? $";
+	cin >> phone;
+	cout << "\nHow much is one month's cable bill? $";
+	cin >> cable;
+	
+	totalMonthlyExpenses = rent + utilities + phone + cable;
+	cout << "\nYour total monthly expenses are $" << totalMonthlyExpenses << endl;
+	
+	totalAnnualExpenses = totalMonthlyExpenses * 12;
+	cout << "\nFor a whole year, your total expenses are $" << totalAnnualExpenses << endl;
+
+	system("pause");
+    return 0;
+}
+

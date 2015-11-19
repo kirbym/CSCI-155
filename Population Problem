@@ -1,0 +1,71 @@
+// Population Problem (Ch. 5).cpp : Defines the entry point for the console application.
+//
+
+/*
+This program will predict the population of a set of organisms based on the rate at which the population
+increases for a selected number of days. The program will display the predicted population starting with the
+first day that the sample multiplies. Day 0 (not shown in table) denotes the starting sample size.
+*/
+
+#include "stdafx.h"
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main()
+{
+	double organisms, //sample size of organisms
+		popIncPercent;	//percentage at which organisms multiply
+	int days,	//how many days the sample will multiply
+		dayCount = 1; //initialize the first day for loop
+	
+	//Ask user to enter how many organisms they are starting with
+	cout << "How many organisms are in the sample size? ";
+	cin >> organisms;
+
+	//Make sure user enters a number of organisms >= 2
+	while (organisms < 2)
+	{
+		cout << "\nPlease enter a number greater than or equal to 2.";
+		cout << "\nHow many organisms are in the sample size? ";
+		cin >> organisms;
+	}
+
+	//Ask user to enter the percentage at which the organisms multiply
+	cout << "\nWhat is the average daily population increase of the \norganisms "
+		<< "(entered as a percentage of the current population)? ";
+	cin >> popIncPercent;
+
+	//Make sure user enters positive percentage
+	while (popIncPercent < 0)
+	{
+		cout << "\nPlease enter a positive percentage.";
+		cout << "\nWhat is the population increase of the organisms? ";
+		cin >> popIncPercent;
+	}
+
+	//Ask user to enter how many days the sample will multiply
+	cout << "\nHow many days will you watch the organism sample multiply? ";
+	cin >> days;
+
+	//Make sure user enters a number of days >= 1
+	while (days < 1)
+	{
+		cout << "\nPlease enter a number greater than or equal to 1.";
+		cout << "\nHow many days will the sample multiply? ";
+		cin >> days;
+	}
+
+	//Display predicted population for each observation day
+	cout << endl << "-- Day --    -- Population --" << endl;
+	while (dayCount <= days)
+	{
+		organisms += (organisms * popIncPercent);	//calculating the number of organisms for each day they multiply
+		cout << "  Day " << dayCount << ": \t " << fixed << showpoint << setprecision(4) << organisms << endl;
+		dayCount++;	//increment day count by 1 to go to the next day
+	}
+
+	system("pause");
+    return 0;
+}
+

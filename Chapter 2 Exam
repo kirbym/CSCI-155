@@ -1,0 +1,21 @@
+// Ch. 2 Exam.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	double initialValue = 21.77, finalValue = 16.44, shares = 600, buyPrice, sellPrice, moneyLost;
+	buyPrice = initialValue * shares;
+	sellPrice = finalValue * shares;
+	moneyLost = buyPrice - sellPrice;
+	cout << "Kathryn paid $" << buyPrice << " for " << shares << " shares of stock at a price of $";
+	cout << initialValue << " per share.\n";
+	cout << "She made $" << sellPrice << " for selling " << shares << " shares of stock at a price of $";
+	cout << finalValue << " per share.\n";
+	cout << "So, she lost $" << moneyLost << " on her investment.\n";
+	system("pause");
+    return 0;
+}

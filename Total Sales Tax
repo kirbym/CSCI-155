@@ -1,0 +1,23 @@
+// Total Sales Tax.cpp : Defines the entry point for the console application.
+/*Write a program that computes the total sales tax on a $52 purchase.
+Assume the state sales tax is 4 percent and county sales tax is 2 percent. 
+Display the purchase price, state tax, county tax, and total tax amounts on the screen.*/
+
+#include "stdafx.h"
+#include <iostream>
+using namespace std;
+
+
+int main()
+{
+	double purchasePrice = 52,
+		stateTaxRate = 0.04,
+		countyTaxRate = 0.02,
+		stateTax = purchasePrice * stateTaxRate,
+		countyTax = purchasePrice * countyTaxRate,
+		totalTax = stateTax + countyTax;
+	cout << "The purchase price is $" << purchasePrice << ".\n";
+	cout << "The state tax is $" << stateTax << " and the county tax is $" << countyTax << ".\n";
+	cout << "The total tax amount is $" << totalTax << ".\n";
+    return 0;
+}

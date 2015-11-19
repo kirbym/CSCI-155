@@ -1,0 +1,31 @@
+// #12 Celsius to Fahrenheit
+// This program will convert temperatures in Celsius to temperatures in Fahrenheit.
+// F = (9/5)C + 32
+
+#include "stdafx.h"
+#include <iostream>
+#include <iomanip> // Necessary library for setprecision(n), showpoint, etc.
+using namespace std;
+
+int main()
+{
+	double celsiusTemp, fahrenheitTemp, nine_fifths; // Define temperature variables and 9/5 conversion
+	const double NINE = 9.0; // Define constant
+	const double FIVE = 5.0; // Define constant
+	const int THIRTY_TWO = 32; // Define additive constant
+	nine_fifths = NINE / FIVE; // Define multiplicative constant
+
+	// Have user input a Celsius temperature
+	cout << "Input a temperature in degrees Celsius and this program will convert\n";
+	cout << "the value into a temperature in degrees Fahrenheit.\n" << endl;
+	cout << "What is the Celsius temperature? ";
+	cin >> celsiusTemp;
+	
+	fahrenheitTemp = (nine_fifths * celsiusTemp) + THIRTY_TWO; // Formula for converting Celsius to Fahrenheit
+
+	// Display resulting Fahrenheit temperature
+	cout << endl;
+	cout << "The Fahrenheit temperate is " << setprecision(4) << showpoint << fahrenheitTemp << " degrees.\n\n";
+	system("pause");
+    return 0;
+}

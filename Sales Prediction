@@ -1,0 +1,20 @@
+// SalesPrediction_MichaelKirby.cpp : Defines the entry point for the console application.
+
+// The East Coast sales division of a company generates 62 percent of total sales. Based on that
+// percentage, write a program that will predict how much the East Coast division will generate
+// if the company has $4.6 million in sales this year. Display the result on the screen.
+
+#include "stdafx.h"
+#include <iostream>
+using namespace std;
+
+
+int main()
+{
+	float eastCoastSalesDivision = 0.62;
+	unsigned int companySales = 4600000;
+	unsigned int eastCoastSalesPrediction = eastCoastSalesDivision*companySales;
+	cout << "The East Coast Sales Division is predicted\nto make $" << eastCoastSalesPrediction << " in sales this year.";
+
+	return 0;
+}

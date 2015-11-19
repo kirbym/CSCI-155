@@ -1,0 +1,545 @@
+// Chapter 4.cpp : Defines the entry point for the console application.
+// Chapter 4 Programs and Topics
+
+#include "stdafx.h"
+#include <iostream>
+#include <iomanip>
+#include <cctype> //For testing characters
+#include <string>
+using namespace std;
+
+/*
+// This program shows conditional if statements
+int main()
+{
+int score1, score2, score3;
+double average;
+
+// Get the three test scores
+cout << "Enter 3 test scores and I will average them: ";
+cin >> score1 >> score2 >> score3;
+
+// Calculate and display the average score
+average = (score1 + score2 + score3) / 3.0;
+cout << fixed << showpoint << setprecision(1);
+cout << "Your average is " << average << endl;
+
+// If the average equals 100, congratulate the user
+if (average == 100)
+{
+cout << "Congratulations! ";
+cout << "That is a perfect score!\n";
+}
+
+// If the average equals 90, give user a B
+if (average == 90)
+{
+cout << "Good job!";
+cout << " You earned a B.\n";
+}
+
+// If the average equals 80, give user a C
+if (average == 80)
+{
+cout << "You earned a C.";
+cout << " Work harder next time.\n";
+}
+system("pause");
+return 0;
+}
+*/
+
+/*
+// This program shows boolean values
+int main()
+{
+bool trueValue1, trueValue2, falseValue;
+int x = 5, y = 10;
+int a = 4, b = 6, c = 4;
+
+//trueValue = (x < y);
+//falseValue = (y == x);
+
+trueValue1 = (a != b);
+trueValue2 = (b != c);
+
+cout << "True is " << trueValue1 << endl;
+cout << "This is also true " << trueValue2 << endl;
+system("pause");
+return 0;
+}
+*/
+
+/*
+// This program shows another type of conditional statement
+int main()
+{
+int x = 5, y = 7;
+
+if (x < y - 8)
+{
+cout << "select a higher number!\n";
+}
+system("pause");
+return 0;
+}
+*/
+
+/*
+int main()
+{
+int x, y, z;
+
+x = 10;
+y = 10;
+z = 0;
+
+//if (z == (y != x))
+//cout << "this is a comparison";
+
+//cout << (x == (y + 3));
+
+if (z == (y != x))
+cout << "this is an assignment" << endl;
+
+cout << endl;
+system("pause");
+return 0;
+}
+*/
+
+/*
+int main()
+{
+int a = 0, b = 2, x = 4, y = 0;
+
+cout << (a == b) << "  " << (a != y) << "  "
+<< (b <= x) << "  " << (y > a) << endl;
+
+cout << endl;
+system("pause");
+return 0;
+}
+*/
+
+/*
+int main()
+{
+int number;
+
+cout << "Enter an integer and I will tell you if it \n";
+cout << "is odd or even. ";
+cin >> number;
+
+if (number % 2 == 0)
+cout << number << " is even.\n";
+else
+cout << number << " is odd \n";
+
+system("pause");
+return 0;
+}
+*/
+
+/*
+int main()
+{
+double num1, num2, quotient;
+
+//Get the two numbers
+cout << "Enter two numbers: ";
+cin >> num1 >> num2;
+
+//If num2 is not zero, perform the division.
+if (num2 != 0)
+{
+quotient = num1 / num2;
+cout << num1 << " divided by " << num2 << " is " << quotient << endl;
+}
+else
+cout << "It is not possible to divide by zero.\n";
+
+system("pause");
+return 0;
+}
+*/
+
+/*
+int main()
+{
+char employed, recentGrad;
+
+cout << "Answer the following questions with either Y for Yes or N for No." << endl;
+
+cout << "Are you employed? ";
+cin >> employed;
+cout << "Have you graduated from college in the past two years? ";
+cin >> recentGrad;
+
+if (employed == 'Y' || employed == 'y')
+{
+if (recentGrad == 'Y' || recentGrad == 'y')
+{
+cout << "You qualify for the special interest rate.\n";
+}
+else
+{
+cout << "You must have graduated from college in the past\n";
+cout << "two years to qualify for special interest rate.\n";
+}
+
+}
+else
+{
+cout << "You must be employed to qualify for the special interest rate.\n";
+}
+
+system("pause");
+return 0;
+}
+*/
+
+/*
+// logic statements && = AND, || = OR
+int main()
+{
+const double MIN_INCOME = 35000.0;
+const double MIN_YEARS = 5;
+
+double income;
+int years;
+
+cout << "What is your annual income? ";
+cin >> income;
+cout << "How many years have you worked at your current job? ";
+cin >> years;
+
+if ((income >= MIN_INCOME) || (years >= MIN_YEARS))
+cout << "You qualify for a loan.\n";
+else
+{
+cout << "You must earn at least $" << MIN_INCOME;
+cout << " or have been\n employed for at least " << MIN_YEARS;
+cout << " years to qualify for a loan.\n";
+}
+
+system("pause");
+return 0;
+}
+*/
+
+/*
+//This program tests characters
+int main()
+{
+char ch;
+
+//Get character from letter
+cout << "Enter a digit or a letter: ";
+ch = cin.get();
+
+//Determine what the user entered
+if (ch >= '0' && ch <= '9')
+cout << "You entered a digit.\n";
+else if (ch >= 'A' && ch <= 'Z')
+cout << "You entered an uppercase letter.\n";
+else if (ch >= 'a' && ch <= 'z')
+cout << "You entered a lowercase letter.\n";
+else
+cout << "That is not a digit or letter.\n";
+
+system("pause");
+return 0;
+}
+*/
+
+/*
+//This program tests characters
+int main()
+{
+char input;
+
+//Get character from letter
+cout << "Enter a digit or a letter: ";
+input = cin.get();
+
+cout << "The character you entered is: " << input << endl;
+cout << "Its ASCII code is: " << static_cast<int>(input) << endl;
+
+//Determine what the user entered
+if (isalpha(input))
+cout << "That is an alphabetic character.\n";
+else if (islower(input))
+cout << "That is a lowercase letter.\n";
+else if (isupper(input))
+cout << "That is an uppercase letter.\n";
+else if (isdigit(input))
+cout << "That is a numeric digit.\n";
+
+system("pause");
+return 0;
+}
+*/
+
+/*
+//Intro to switch(variable)
+int main()
+{
+char choice;
+
+cout << "Enter A, B, or C: ";
+cin >> choice;
+
+switch (choice)
+{
+case 'a':
+case 'A': cout << "You entered A.\n";
+break;
+case 'b':
+case 'B': cout << "You entered B.\n";
+break;
+case 'c':
+case 'C': cout << "You entered C.\n";
+break;
+default: cout << "You did not enter A, B, or C!\n";
+}
+
+system("pause");
+return 0;
+}
+*/
+
+/*
+//Intro to switch(variable)
+int main()
+{
+int userNum;
+
+cout << "Enter one of the numbers 1, 2, or 3: ";
+cin >> userNum;
+
+switch (userNum)
+{
+case 1: cout << "You entered one.\n";
+break;
+case 2: cout << "You entered two.\n";
+break;
+case 3: cout << "You entered three.\n";
+break;
+default: cout << "You did not enter 1, 2, or 3.\n";
+}
+
+
+system("pause");
+return 0;
+}
+*/
+
+/*
+//Using switch and if together (my version)
+int main()
+{
+char packageChoice; //Customer's package choice
+const double RATE_A = 9.95;
+const double RATE_B = 14.95;	//Monthly rates regardless of usage
+const double RATE_C = 19.95;
+const double USAGE_A = 0.08;	//Price per minute if additional usage past limit
+const double USAGE_B = 0.06;
+const double MAX_MO_HOURS = 744.0; //Max number of hours in a month
+double hours; //# of hours customer uses
+double charges; //Total monthly price
+string userName; //Customer name
+
+cout << "Enter your Name: "; //Get customer's name
+getline(cin, userName);
+
+cout << "Enter A, B, or C to select your desired package: "; //Have customer select package option
+cin >> packageChoice;
+
+cout << "How many hours of service were used? "; //Have customer enter how many hours they used
+cin >> hours;
+
+if (packageChoice == 'a' || packageChoice == 'A' || packageChoice == 'b' || packageChoice == 'B'
+|| packageChoice == 'c' || packageChoice == 'C') //Validate that customer chose valid package
+{
+if (hours >= 0 && hours <= MAX_MO_HOURS) //Validate that customer entered appropriate number of hours
+{
+switch (packageChoice) //Determine charges for each case
+{
+case 'a':
+case 'A': if (hours > 5)
+charges = RATE_A + ((hours - 5) * 60 * USAGE_A);
+else
+charges = RATE_A;
+break;
+case 'b':
+case 'B': if (hours > 10)
+charges = RATE_B + ((hours - 10) * 60 * USAGE_B);
+else
+charges = RATE_B;
+break;
+case 'c':
+case 'C': charges = RATE_C;
+}
+cout << "Customer Name: " << userName << endl;
+cout << "Package Chosen: " << packageChoice << endl;
+cout << fixed << showpoint << setprecision(2);
+cout << "Hours used: " << hours << endl;
+cout << "Monthly Charges: " << charges << endl;
+}
+else
+cout << "You entered an invalid number of hours.\nPlease start over and enter a valid number of hours." << endl;
+}
+else
+cout << "That is an invalid package choice.\nPlease start over and choose a valid package." << endl;
+
+system("pause");
+return 0;
+}
+*/
+
+
+//Using switch and if together (Professor's version)
+int main()
+{
+	const double A_BASE_COST = 9.95, //Base charge for each package
+		B_BASE_COST = 14.95,
+		C_BASE_COST = 19.95;
+	const double MAX_MO_HOURS = 744.0; //Maximum number of hours in a month
+
+	string custName;
+	char package; //User's plan choice: A, B, or C
+	double hours, //Monthly hours used
+		charges, charges2, charges3;	//User's total monthly charges
+	bool validInput = true;
+
+	cout << "Customer Name: ";
+	getline(cin, custName);
+	cout << "Which Internet phone package does the customer use (A, B, or C)? ";
+	cin >> package;
+
+	if (package != 'A' && package != 'a' && //Validate package chosen
+		package != 'B' && package != 'b' &&
+		package != 'C' && package != 'c')
+	{
+		cout << "Enter only A, B, or C for the package.\n";
+		validInput = false;
+	}
+	else //Package choice is OK
+	{
+		cout << "How many hours were used last month? ";
+		cin >> hours;
+		if (hours < 0 || hours > MAX_MO_HOURS) //Check if hours is valid
+		{
+			cout << "Enter a number from 0 through " << MAX_MO_HOURS
+				<< " for hours used.\n";
+			validInput = false;
+		}
+	}
+
+	if (validInput) //Both inputs are valid
+	{
+		switch (package) //Calculate charges depending on what package was chosen
+		{
+		case 'A':
+		case 'a': charges = A_BASE_COST;
+			if (hours > 5.0)
+				charges += ((hours - 5.0) * 60 * .08);
+
+			break;
+		case 'B':
+		case 'b': charges = B_BASE_COST;
+			if (hours > 10.0)
+				charges += ((hours - 10.0) * 60 * .06);
+			break;
+		case 'C':
+		case 'c': charges = C_BASE_COST;
+		}
+
+		//Display customer invoice
+		cout << endl << "--- Invoice ---" << endl;
+		cout << "Customer Name: " << custName << endl;
+		cout << "Package Chosen: " << package << endl;
+		cout << fixed << showpoint << setprecision(2);
+		cout << "Hours Used: " << hours << endl;
+		cout << "Monthly charges: $" << charges << endl;
+
+
+		switch (package) //Calculate charges for other packages to determine which is cheapest
+		{
+		case 'a':
+		case 'A': charges2 = B_BASE_COST; //Charges for plan B
+			if (hours > 10)
+				charges2 += ((hours - 10.0) * 60 * .06); //Charges for plan B if hours > 10
+			charges3 = C_BASE_COST; //Charges for plan C
+			if (charges > charges2 && charges < charges3) //Charges of A > charges of B and charges of A < charges of C
+			{
+				cout << "Plan B would be cheaper for you.\n";
+				cout << "You could save " << charges - charges2 << " by switching.\n";
+			}
+
+			else if (charges > charges3 && charges < charges2) //Charges of A > charges of C and charges of A < charges of B
+			{
+				cout << "Plan C would be cheaper for you.\n";
+				cout << "You could save " << charges - charges3 << " by switching.\n";
+			}
+			else if (charges > charges2 && charges > charges3) //Charges of A > charges of B and charges of A > charges of C
+			{
+				cout << "Both Plan B and C would be cheaper for you.\n";
+				cout << "You could save " << charges - charges2 << " by switching to Plan B.\n";
+				cout << "You could save " << charges - charges3 << " by switching to Plan C.\n";
+			}
+			break;
+		case 'b':
+		case 'B': charges2 = A_BASE_COST; //charges of plan A
+			if (hours > 5)
+				charges2 += ((hours - 5.0) * 60 * .08); //charges of plan A if hours > 5
+			charges3 = C_BASE_COST; //Charges of plan C
+			if (charges > charges2 && charges < charges3) //charges of B > A and B < C
+			{
+				cout << "Plan A would be cheaper for you.\n";
+				cout << "You could save " << charges - charges2 << " by switching.\n";
+			}
+
+			else if (charges > charges3 && charges < charges2) //charges of B > C and B < A
+			{
+				cout << "Plan C would be cheaper for you.\n";
+				cout << "You could save " << charges - charges3 << " by switching.\n";
+			}
+			else if (charges > charges2 && charges > charges3) //charges of B > A and B > C
+			{
+				cout << "Both Plan A and C would be cheaper for you.\n";
+				cout << "You could save " << charges - charges2 << " by switching to Plan A.\n";
+				cout << "You could save " << charges - charges3 << " by switching to Plan C.\n";
+			}
+			break;
+		case 'c':
+		case 'C':charges2 = B_BASE_COST; //charges of B
+			if (hours > 10)
+				charges2 += ((hours - 10.0) * 60 * .06); //charges of B if hours > 10
+			charges3 = A_BASE_COST; //charges of A
+			if (hours > 5)
+				charges3 += ((hours - 5.0) * 60 * .08); //charges of A if hours > 5
+			if (charges > charges2 && charges < charges3) //charges of C > B and C < A
+			{
+				cout << "Plan B would be cheaper for you.\n";
+				cout << "You could save " << charges - charges2 << " by switching.\n";
+			}
+
+			else if (charges > charges3 && charges < charges2) //charges of C > A and C < B
+			{
+				cout << "Plan A would be cheaper for you.\n";
+				cout << "You could save " << charges - charges3 << " by switching.\n";
+			}
+			else if (charges > charges2 && charges > charges3) //charges of C > B and C > A
+			{
+				cout << "Both Plan B and A would be cheaper for you.\n";
+				cout << "You could save " << charges - charges2 << " by switching to Plan B.\n";
+				cout << "You could save " << charges - charges3 << " by switching to Plan A.\n";
+			}
+		}
+
+	}
+	system("pause");
+	return 0;
+}

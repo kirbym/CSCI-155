@@ -1,0 +1,36 @@
+// Average Rainfall.cpp : Defines the entry point for the console application.
+/*Write a program that calculates the average monthly rainfall for three months. The program should ask the user to enter the name
+of each month, such as June or July, and the amount of rain ( in inches) that fell that month. The program should display a message 
+similar to the following: The average monthly rainfall for June, July, and August was 6.72 inches.*/
+
+#include "stdafx.h"
+#include <iostream>
+#include <string>
+#include <cmath>
+using namespace std;
+
+
+int main()
+{
+	string month1, month2, month3;
+	double rainfallMonth1, rainfallMonth2, rainfallMonth3, averageRainfall;
+	cout << "This program will calculate the average rainfall for 3 months chosen by \nthe user. ";
+	cout << "\nPlease enter the name of the first month: ";
+	cin >> month1;
+	cout << "How much rainfall did " << month1 << " have in inches? ";
+	cin >> rainfallMonth1;
+	cout << "\nPlease enter the name of the second month: ";
+	cin >> month2;
+	cout << "How much rainfall did " << month2 << " have in inches? ";
+	cin >> rainfallMonth2;
+	cout << "\nPlease enter the name of the third and final month: ";
+	cin >> month3;
+	cout << "How much rainfall did " << month3 << " have in inches? ";
+	cin >> rainfallMonth3;
+
+	averageRainfall = (rainfallMonth1 + rainfallMonth2 + rainfallMonth3) / 3;
+	cout << "\nThe average rainfall for " << month1 << ", " << month2 << ", and " << month3 << " is ";
+	cout << averageRainfall << " inches." << endl;
+	system("pause");
+    return 0;
+}

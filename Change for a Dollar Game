@@ -1,0 +1,80 @@
+// Change for a Dollar Game.cpp : Defines the entry point for the console application.
+
+/*
+This program challenges the user to enter the number of pennies, nickels, dimes, and quarters it takes to equal exactly one dollar.
+If the user's combination does equal exactly one dollar, the user is deemed victorious.
+The program will also display whether the user's combination was above or below one dollar.
+*/
+
+//Ch.4 #9 Change for a Dollar Game
+
+#include "stdafx.h"
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main()
+{
+	int numPenny, numNickel, numDime, numQuarter;	//Number of each coin that user picks
+	double userAnswer;	//The value of the user's combination of coins
+	const double PENNY_VALUE = 0.01;
+	const double NICKEL_VALUE = 0.05;
+	const double DIME_VALUE = 0.10;	//Values of all 4 coins and the dollar
+	const double QUARTER_VALUE = 0.25;
+	const double DOLLAR_VALUE = 1.00;
+
+	//Display basis of game and guidelines
+	cout << "-- Change for a Dollar Game --" << endl;
+	cout << "Enter the number of pennies, nickels, dimes, and quarters make \nup exactly one dollar." << endl;
+	cout << "Remember that a Penny is worth 1 cents, a Nickel is worth 5 cents,\n";
+	cout << "a Dime is worth 10 cents, and a Quarter is worth 25 cents." << endl << endl;
+	
+	//Prompt user to enter the number of each coin for their solution
+	cout << "How many quarters are in your solution? ";
+	cin >> numQuarter;
+	cout << "How many dimes are in your solution? ";
+	cin >> numDime;
+	cout << "How many nickels are in your solution? ";
+	cin >> numNickel;
+	cout << "How many pennies are in your solution? ";
+	cin >> numPenny;
+
+	//Formula to calculate the value of the user's combination of coins
+	userAnswer = ((numQuarter * QUARTER_VALUE) + (numDime * DIME_VALUE) + (numNickel * NICKEL_VALUE) + (numPenny * PENNY_VALUE));
+
+	//First check to make sure user does not enter negative values for the coins
+	if ((numQuarter < 0) || (numDime < 0) || (numNickel < 0) || (numPenny < 0))
+	{
+		cout << endl << "You have entered an incorrect value." << endl;
+		cout << "Please check the number of coins you have entered and try again." << endl;
+		cout << "Pro Tip: You can't have a negative number of coins." << endl;
+	}
+
+	//Compare user's answer to the value of a dollar to determine if they won
+	else if (userAnswer == DOLLAR_VALUE)
+	{
+		cout << endl << "Congratulations! You Win!" << endl;
+		cout << numQuarter << " quarter(s), " << numDime << " dime(s), " << numNickel << " nickel(s), and " << numPenny << " pennies ";
+		cout << "make up exactly $" << fixed << showpoint << setprecision(2) << userAnswer << endl;
+	}
+
+	//If user enters more than a dollar, report the results of their combination of coins
+	else if (userAnswer > DOLLAR_VALUE)
+	{
+		cout << endl << "Sorry. Your answer is incorrect." << endl;
+		cout << "Your solution is greater than one dollar." << endl;
+		cout << "Your chosen combination adds up to $" << fixed << showpoint << setprecision(2) << userAnswer << endl;
+	}
+
+	//If user enters less than a dollar, report the results of their combination of coins
+	else if (userAnswer < DOLLAR_VALUE)
+	{
+		cout << endl << "Sorry. Your answer is incorrect." << endl;
+		cout << "Your solution is less than one dollar." << endl;
+		cout << "Your chosen combination adds up to $" << fixed << showpoint << setprecision(2) << userAnswer << endl;
+	}
+	
+	cout << endl;
+	system("pause");
+    return 0;
+}

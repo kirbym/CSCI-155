@@ -1,0 +1,37 @@
+// Ch. 3 Exam.cpp : Defines the entry point for the console application.
+// This program will produce two random numbers between 10 and 19 to be added together by the user.
+
+#include "stdafx.h"
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+
+int main()
+{
+	unsigned seed;
+	seed = time(0); // System generated seed value
+	srand(seed); 
+
+	int num1, num2, userAnswer, correctAnswer; // Variables for the random numbers and answers
+	const int MAX = 19; // Max value of the random number
+	const int MIN = 10; // Min value of the random number
+
+	num1 = rand() % (MAX - MIN + 1) + MIN; // Formula to calculate random number between 10 and 19
+	num2 = rand() % (MAX - MIN + 1) + MIN; // Formula to calculate random number between 10 and 19
+	correctAnswer = num1 + num2; // Correct answer when adding the two numbers together
+
+	// Display math problem for user
+	cout << "  " << num1 << endl;
+	cout << "+ " << num2 << endl;
+	cout << "----" << endl << "  ";
+	cin >> userAnswer; // Let user enter an answer
+
+	// Allow user to check if answer is correct
+	cout << "The correct answer is " << correctAnswer << ", you entered " << userAnswer << endl;
+
+	system("pause");
+    return 0;
+}
+

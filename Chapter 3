@@ -1,0 +1,466 @@
+// Chapter 3.cpp : Defines the entry point for the console application.
+// Programs and Topics discussed in Chapter 3
+
+#include "stdafx.h"
+#include <iostream>
+#include <string> // needed for string variables
+#include <cmath> // needed for sqrt, pow, abs, etc.
+#include <iomanip> // needed for setprecision, setw, fixed, showpoint, and left/right justification
+#include <cstdlib> // needed for random number generation
+#include <ctime> // needed for time()
+using namespace std;
+
+/*
+// Addition between two randomly generated numbers on [1, 9]
+int main()
+{
+	unsigned seed;
+	seed = time(0); // Generates different seed value each time
+	srand(seed);
+
+	int num1, num2, max, min, correctAnswer, userAnswer;
+	max = 9, min = 1;
+	num1 = rand() % max + min; // Random number modulus max number gives remainder between 0 and max-1
+	num2 = rand() % max + min; // Then add the minimum value to bring the random number in the range [min, max]
+	correctAnswer = num1 + num2;
+
+	cout << "   " << num1 << endl;
+	cout << " + " << num2 << endl;
+	cout << "----" << endl << "  ";
+	cin >> userAnswer;
+
+	cout << "\nThe correct answer is " << correctAnswer << endl;
+
+	system("pause");
+	return 0;
+}
+*/
+
+/*
+// This program demonstrates the use of type casting
+int main()
+{
+int books, months;
+double booksPerMonth;
+
+//Get user inputs.
+cout << "How many books do you plan to read? ";
+cin >> books;
+cout << "How many months will it take you to read them? ";
+cin >> months;
+
+//Compute and display books read per month.
+booksPerMonth = static_cast<double>(books) / months;
+cout << "That is " << booksPerMonth << " books per month.\n";
+cout << "Book current value is " << books << endl;
+system("pause");
+return 0;
+}
+*/
+
+/*
+// This program demonstrates the relationship between character codes and numbers
+int main()
+{
+int number = 65;
+
+//Display the value of the number variable.
+cout << number << endl;
+
+//Use type cast to display the value of number converted to the char data type.
+cout << static_cast<char>(number) << endl;
+
+char myChar = 'J';
+cout << myChar << endl;
+cout << static_cast<int>(myChar) << endl;
+system("pause");
+return 0;
+}
+*/
+
+/*
+// This program shows the use of a constant variable
+int main()
+{
+const double CONVERSION = 1.467;
+double milesPerHour, feetPerSecond;
+
+cout << "This program converts miles per hour to feet per second.\n";
+cout << "Enter a speed in MPH: ";
+cin >> milesPerHour;
+
+feetPerSecond = milesPerHour * CONVERSION;
+cout << "That is " << feetPerSecond << " ft/s\n";
+
+system("pause");
+return 0;
+}
+*/
+
+/*
+// This program shows the use of set width [setw(n)]
+int main()
+{
+int num1 = 2897, num2 = 5, num3 = 837,
+num4 = 34, num5 = 7, num6 = 1623,
+num7 = 390, num8 = 3456, num9 = 12;
+
+// Display the first row of numbers
+cout << setw(10) << num1 << setw(10) << num2 << setw(10) << num3 << endl;
+
+// Display the second row of numbers
+cout << setw(10) << num4 << setw(10) << num5 << setw(10) << num6 << endl;
+
+//Display the third row of numbers
+cout << setw(10) << num7 << setw(10) << num8 << setw(10) << num9 << endl;
+
+system("pause");
+return 0;
+}
+*/
+
+/*
+int main()
+{
+// This program demonstrates setprecision, fixed numbers, showpoint.
+
+double day1 = 145689.99, day2 = 205614.85, day3 = 198645.22, total;
+// Calculate total sales
+total = day1 + day2 + day3;
+
+// Display the sales figures
+cout << "\nSales Figures\n";
+cout << "-------------\n";
+cout << setprecision(4);
+cout << "Day 1: " << fixed << day1 << endl;
+cout << "Day 2: " << fixed << day2 << endl;
+cout << "Day 3: " << fixed << day3 << endl;
+cout << "Total: " << fixed << total << endl;
+system("pause");
+cout << endl;
+
+double x = 456.0;
+cout << fixed << showpoint << setprecision(2) << x << endl;
+system("pause");
+return 0;
+}
+*/
+
+/*
+int main()
+{
+	const double PI = 3.14159;
+	double degrees, radians;
+
+	cout << "Enter an angle in degrees and I will convert it\n";
+	cout << "to radians for you: ";
+	cin >> degrees;
+	radians = (degrees * PI) / 180;
+
+	// Display the value in radians left-justified, in fixed-point notation, with four decimal places of precision, in a field
+	// seven spaces wide.
+	cout << degrees << " degrees is equal to: ";
+	cout << setprecision(4);
+	cout << left << fixed << showpoint << setw(7) << radians;
+	cout << " radians." << endl;
+	system("pause");
+	return 0;
+}
+*/
+
+/*
+int main()
+{
+// Have user enter full name
+string firstName, lastName, fullName;
+cout << "Please enter your first name: ";
+getline(cin, firstName); // getline allows user to enter string value with spaces
+cout << "Please enter your last name: ";
+getline(cin, lastName);
+
+// Combine name to be single variable
+fullName = firstName + " " + lastName;
+// Set number of stars to the amount of characters in variable
+int numStars;
+numStars = fullName.length();
+
+// Print the user's name between two lines of asterisks
+string stars;
+stars.assign(numStars, '*'); // variable.assign creates a number of characters in a row
+cout << stars << endl; // variable must be string type b/c I am assigning n characters to the variable
+cout << fullName << endl;
+cout << stars << endl;
+
+
+system("pause");
+return 0;
+}
+*/
+
+/*
+int main()
+{
+// Old method for defining strings
+const int SIZE = 12; // string can only hold up to 11 characters with the 12th being null terminator (\0)
+char name1[SIZE],
+name2[SIZE];
+
+strcpy_s(name1, "Sebastian");
+cout << "name1 now holds the string " << name1 << endl;
+
+strcpy_s(name2, name1);
+cout << "name2 now also holds the string " << name2 << endl;
+
+system("pause");
+return 0;
+}
+*/
+
+/*
+int main()
+{
+const int SIZE = 5;
+char word[SIZE];
+
+cout << "Enter a word: ";
+cin.width(SIZE);
+cin >> word;
+cout << "You entered " << word << endl;
+
+system("pause");
+return 0;
+}
+*/
+
+/*
+int main()
+{
+double celsiusTemp, fahrenheitTemp, tempDouble;
+tempDouble = 9.0 / 5.0;
+
+cout << "Enter a Celsius temperature and this program will\nconvert it to a temperature in Fahrenheit." << endl;
+cout << "Celsius temperture: ";
+cin >> celsiusTemp;
+
+fahrenheitTemp = tempDouble * celsiusTemp + 32;
+
+cout << "The Fahrenheit temperature is: " << fahrenheitTemp << endl;
+system("pause");
+return 0;
+}
+*/
+
+/*
+int main()
+{
+double a, b, c, x1, x2, x3;
+
+cout << "Enter the length of side a: ";
+cin >> a;
+cout << "Enter the length of side b: ";
+cin >> b;
+
+c = sqrt(pow(a, 2) + pow(b, 2));
+cout << "The length of side c is: " << c << endl;
+
+x1 = (((-1 * b) + sqrt(pow(b, 2) - (4 * a * c))) / (2 * a)); // Not working at the moment
+x2 = (((-1 * b) - sqrt(pow(b, 2) - (4 * a * c))) / (2 * a)); // Not working at the moment
+
+cout << "x is either " << x1 << " or " << x2 << endl;
+
+system("pause");
+return 0;
+}
+*/
+
+/*
+int main()
+{
+// Generate and print three random numbers
+
+unsigned seed;  // Random generator seed
+
+// Get a "seed" value from the user
+cout << "Enter a seed value: ";
+cin >> seed;
+
+// Set the random generator seed before calling rand()
+srand(seed);
+
+// Generate and print three random numbers
+cout << rand() << "     "; // All three values depend on seed value
+cout << rand() << "     "; // Same "random" numbers with same seed value
+cout << rand() << endl;
+system("pause");
+
+// Random integer on [10, 18]
+int min, num;
+min = 10;
+num = rand() % 9 + min; // rand() modulus 9 will give a remainder between 0 and 8, then add minimum value
+cout << num << endl; // Random number relies on seed value
+system("pause");
+return 0;
+}
+*/
+
+/*
+// pg 145 #19 Monthly Payments
+int main()
+{
+double loanAmt, // Amount of the loan
+intRate, // Annual interest rate of the loan
+monIntRate, // Monthly interest rate
+monPayment, // Monthly payment
+totIntPaid, // Total interest paid over life of loan
+totAmtPaid; // Total amount paid over life of loan
+
+int numPayments; // Number of payments
+
+// Ask user to input information about the loan, interest rate, and number of payments
+cout << "This program will calculate the monthly payment on a loan." << endl;
+cout << "What is the loan amount? ";
+cin >> loanAmt;
+cout << "What is the annual interest rate? ";
+cin >> intRate;
+cout << "How many monthly payments with be made? ";
+cin >> numPayments;
+
+monIntRate = intRate / 12; // Monthly interest rate
+monPayment = (monIntRate * pow((1 + monIntRate), numPayments)) / (pow((1 + monIntRate), numPayments) - 1) * loanAmt; // Calculate monthly payment
+totAmtPaid = monPayment * numPayments; // Calculate total amount to be paid
+totIntPaid = totAmtPaid - loanAmt; // Calculate the amount of interest paid on the loan
+
+//Display results in a loan report
+cout << "\n - - Loan Report - - \n\n";
+cout << fixed << showpoint << setprecision(2);
+cout << "Loan Amount:          $" << setw(9) << loanAmt << endl;
+cout << "Monthly Interest Rate: " << setw(8) << (monIntRate * 100) << "%" << endl;
+cout << "Number of Payments:    " << setw(9) << numPayments << endl;
+cout << "Monthly Payment:      $" << setw(9) << monPayment << endl;
+cout << "Total Amount Paid:    $" << setw(9) << totAmtPaid << endl;
+cout << "Interest Paid:        $" << setw(9) << totIntPaid << endl;
+
+system("pause");
+return 0;
+}
+*/
+
+/*
+// pg 145 #18 Interest Earned
+int main()
+{
+	double intRate, // Interest rate
+		principal, // Principal invested
+		interestAmt, // Gained interest
+		savingsAmt; // New balance after compounding interest
+	int timesCompounded; // How many times the interest will be compounded
+
+	// Gather principal, interest rate, and times compounded from user
+	cout << "What is the principal amount? ";
+	cin >> principal;
+	cout << "What is the interest rate? ";
+	cin >> intRate;
+	cout << "How many times is the interest compounded? ";
+	cin >> timesCompounded;
+
+	savingsAmt = principal * pow(1 + (intRate / timesCompounded), timesCompounded); // Formula to calculate new savings balance
+	interestAmt = savingsAmt - principal; // Formula to determine how much interest was gained
+
+	// Display results
+	cout << fixed << showpoint << setprecision(2);
+	cout << "\n----Savings----\n";
+	cout << "Interest Rate:    " << setw(9) << (intRate * 100) << "%" << endl;
+	cout << "Times Compounded: " << setw(10) << timesCompounded << endl;
+	cout << "Principal:       $" << setw(10) << principal << endl;
+	cout << "Gained interest: $" << setw(10) << interestAmt << endl;
+	cout << "Balance:         $" << setw(10) << savingsAmt << endl;
+
+	system("pause");
+	return 0;
+}
+*/
+
+/*
+// pg 145 #17 Math Tutor
+int main()
+{
+	unsigned seed; // Create seed
+	seed = time(0); // System generated seed value
+	srand(seed);
+
+	int num1, num2, userAnswer, correctAnswer; // Define integer variables
+	const int MAX = 100; // Max value of random number
+	const int MIN = 1; // Min value of random number
+	string ready = "Ready?"; // Prompt the user to begin
+	
+	num1 = rand() % MAX + MIN; // Formula to generate random number between min and max
+	num2 = rand() % MAX + MIN; // Second random number
+	correctAnswer = num1 + num2; // The correct answer when adding the two random numbers
+
+	// Display the math problem for user to solve
+	cout << ready << endl;
+	system("pause");
+	cout << " " << num1 << endl;
+	cout << "+" << num2 << endl;
+	cout << "----" << endl << " ";
+	cin >> userAnswer; // User's answer to the math problem
+	cout << endl;
+	cout << "The correct answer is " << correctAnswer << ", you answered " << userAnswer << endl; // Allow user to check answer
+	system("pause");
+	return 0;
+}
+*/
+
+/*
+// pg 146 #22 Angle Calculator
+int main()
+{
+	double angle, sine, cosine, tangent; // Variables for use with angle
+	
+	// Get angle input from user
+	cout << "Enter an angle in radians: ";
+	cin >> angle;
+
+	sine = sin(angle); // Calculate sine of the angle
+	cosine = cos(angle); // Calculate cosine of the angle
+	tangent = tan(angle); // Calculate tangent of the angle
+
+	// Display results in fixed-point notation with precision to 4 places
+	cout << fixed << showpoint << setprecision(4);
+	cout << "The sine of " << angle << " radians is " << sine << endl;
+	cout << "The cosine of " << angle << " radians is " << cosine << endl;
+	cout << "The tangent of " << angle << " radians is " << tangent << endl;
+	system("pause");
+	return 0;
+}
+*/
+
+/*
+// pg 146 #23 Stock Transaction Program
+int main()
+{
+	double shares = 1000.0, // Number of shares in transaction
+		buyPrice = 45.5, // Price of stock per share when bought
+		sellPrice = 56.9, // Price of stock per share when sold
+		purchase = shares * buyPrice, // Total price of investment when bought
+		sale = shares * sellPrice, // Total price of investment when sold
+		buyCommission, // Commission paid to broker when bought
+		sellCommission, // Commission paid to broker when sold
+		profit; // Profit of the investment
+	const double COMMISSION_PERCENT = 0.02; // Commission percentage taken by broker
+
+	buyCommission = shares * buyPrice * COMMISSION_PERCENT; // Formula to calculate commission when stock is bought
+	sellCommission = shares * sellPrice * COMMISSION_PERCENT; // Formula to calculate commission when stock is sold
+	profit = sale - (purchase + buyCommission + sellCommission); // Calculate profit after the sale
+
+	// Display prices and total profit
+	cout << "Joe paid $" << purchase << " for the stock.\n";
+	cout << "He paid his broker $" << buyCommission << " when he bought the stock.\n";
+	cout << "Joe sold the stock for $" << sale << ".\n";
+	cout << "He paid his broker $" << sellCommission << " when selling the stock.\n";
+	cout << "Joe's net gain was $" << profit << ".\n";
+	
+	system("pause");
+	return 0;
+}
+*/

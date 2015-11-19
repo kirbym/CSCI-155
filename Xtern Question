@@ -1,0 +1,70 @@
+// Xtern Questions.cpp : Defines the entry point for the console application.
+
+// This program determines if a string entered by the user has repeated characters or not.
+// If the string does not repeat any characters, the string is deemed unique.
+
+/*
+QUESTION 1
+
+Implement a function boolean hasAllUniqueChars(String s) which determines whether or not a string is only composed of unique characters.
+In other words; return false if a string contains a character more than once.
+
+
+Example 1: hasAllUniqueChars("hello") -> false
+
+Example 2: hasAllUniqueChars("abcde123") -> true
+
+Example 3: hasAllUniqueChars(" ") -> false
+
+Example 4: hasAllUniqueChars("") -> true
+*/
+
+#include "stdafx.h"
+#include <iostream>
+#include <string>
+using namespace std;
+
+bool hasAllUniqueChars(string);		//Function declaration
+
+int main()
+{
+	string s;		//String created by user
+
+	//Prompt user to enter string
+	cout << "Enter a string:" << endl;
+	getline(cin, s);
+
+	if (hasAllUniqueChars(s) == 0)	//If function call is false (at least one letter repeats in string), display following message
+		cout << "The string \"" << s << "\" is not unique." << endl;
+	else	//Otherwise (no letter is repeated in string), display following message
+		cout << "The string \"" << s << "\" is unique." << endl;
+	
+	system("pause");
+	return 0;
+}
+
+bool hasAllUniqueChars(string s)		//Boolean function to determine if a letter repeats
+{
+	bool status = 1;
+
+	for (unsigned i = 0; i < s.length(); i++)
+		for (unsigned j = i + 1; j < s.length(); j++)
+			if (s[i] == s[j])		//Comparing the ith and jth letters to check if they are the same
+			{
+				status = false;		//Meaning the ith letter is equal to the jth letter somewhere in the string
+				return 0;
+			}
+			else
+				status = true;		//Meaning the ith letter is not equal to the jth letter anywhere in the string
+	
+	return status;
+}
+
+/*
+Other considerations: What is the big-O time and space complexity of your solution? 
+Can this be done without any additional memory allocations or data structures? 
+If so, what is the big-O of that solution and what trade-offs would you have to make in this solution?
+
+Time Complexity: O(n^2)
+Space Complexity: O(1)
+*/

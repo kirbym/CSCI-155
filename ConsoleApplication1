@@ -1,0 +1,26 @@
+// ConsoleApplication1.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+using namespace std;
+
+
+int main()
+{
+	int intNumber;
+	double floatNumber;
+	//double firstNumber, secondNumber;
+
+	cout << "Enter a number: ";
+	cin >> intNumber;
+	//cin >> firstNumber;
+	cout << "Enter a second number: ";
+	cin >> floatNumber;
+	//cin >> secondNumber;
+	cout << "You have selected " << intNumber << " and " << floatNumber << endl;
+	//cout << "You have selected " << firstNumber << " and " << secondNumber << endl;
+	system("pause");
+    return 0;
+}
+

@@ -64,3 +64,63 @@ int main()
 	return 0;
 }
 */
+
+/*
+//sending multiple arguments to a function
+void displayValue(float, float, float);		//function prototype
+
+int main()
+{
+	float num1, num2, num3;
+
+	cout << "This program will multiply three numbers." << endl;
+	cout << "Enter three numbers separated by a space.\n";
+	cin >> num1 >> num2 >> num3;
+	displayValue(num1, num2, num3);
+	cout << "\nBack in main function" << endl;
+	system("pause");
+	return 0;
+}
+
+void displayValue(float num1, float num2, float num3)
+{
+	float answer = num1 * num2 * num3;
+	cout << answer;
+}
+*/
+
+bool isPrime(int);		//funtion prototype
+
+int main()
+{
+	int value;
+	cin >> value;
+
+	isPrime(value);
+
+
+	if (isPrime == 0)
+	{
+		cout << "The number is not prime.\n";
+	}
+	else
+		cout << "The number is prime.\n";
+	system("pause");
+	return 0;
+}
+
+bool isPrime(int value)
+{
+	int number;
+
+	for (int i = 3; i < sqrt(value); i += 2)
+	{
+		number = value % i;
+		if (number != 0)
+		{
+			return true;
+		}
+		else
+			return false;
+	}
+}

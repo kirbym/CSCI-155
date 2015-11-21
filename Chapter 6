@@ -3,6 +3,7 @@
 
 #include "stdafx.h"
 #include <iostream>
+#include <cmath>
 using namespace std;
 
 /*	//introduction to functions

@@ -1,0 +1,91 @@
+// Ch 6, 11. Lowest Score Drop.cpp : Defines the entry point for the console application.
+
+// Ch. 6 #11 Lowest Score Drop
+// This program calculates the average of a group of test scores, where the lowest score in the group is dropped.
+
+#include "stdafx.h"
+#include <iostream>
+using namespace std;
+
+void getScore(int);								// }
+void calcAverage(int, int, int, int, int);		//  } function prototypes
+int findLowest();								// }
+
+int score,	// score variable entered by user
+score1,		// score #1
+score2,		// score #2
+score3,		// score #3
+score4,		// score #4
+score5,		// score #5
+lowest;		// lowest of the 5 scores
+
+int main()
+{
+	cout << "Enter 5 test scores and this program will drop the lowest \nscore, and then average the remaining 4." << endl;
+	
+	for (int count = 1; count <= 5; count++)
+	{
+		getScore(count);	//function call to have user enter score
+		
+		switch (count)		//assigning the scores to separate variables
+		{
+		case 1: score1 = score;
+			break;
+		case 2: score2 = score;
+			break;
+		case 3: score3 = score;
+			break;
+		case 4: score4 = score;
+			break;
+		case 5: score5 = score;
+		}
+	}
+	
+	// Display average of 4 highest scores
+	cout << "The average of the four highest scores is: ";
+	calcAverage(score1, score2, score3, score4, score5);	//function call to calculate average of 4 highest scores
+	cout << endl;
+	system("pause");
+    return 0;
+}
+
+void getScore(int count)
+{
+	// Have user enter score
+	cout << "Enter score " << count << ": ";
+	cin >> score;
+
+	while (score < 0 || score > 100)	// validating test score
+	{
+		cout << "\nPlease enter a valid test score.";
+		cout << "Enter score " << count << ": ";
+		cin >> score;
+	}
+}
+
+void calcAverage(int score1, int score2, int score3, int score4, int score5)
+{
+	double sum, average;
+
+	sum = score1 + score2 + score3 + score4 + score5;	// calculate the total of all 5 scores
+	average = (sum - findLowest()) / 4;		// subtract lowest score from total, then find average
+
+	cout << average;	// show average
+}
+
+int findLowest()
+{
+	lowest = score1;	// initializing lowest score
+
+	// find out which score is lowest
+	if (score2 < lowest)
+		lowest = score2;
+	if (score3 < lowest)
+		lowest = score3;
+	if (score4 < lowest)
+		lowest = score4;
+	if (score5 < lowest)
+		lowest = score5;
+
+	return lowest;		// return lowest score to calcAverage function
+}

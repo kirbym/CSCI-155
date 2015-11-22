@@ -9,7 +9,7 @@ using namespace std;
 
 void getScore(int);								// }
 void calcAverage(int, int, int, int, int);		//  } function prototypes
-int findLowest();								// }
+int findLowest(int, int, int, int, int);		// }
 
 int score,	// score variable entered by user
 score1,		// score #1
@@ -42,7 +42,7 @@ int main()
 	}
 	
 	// Display average of 4 highest scores
-	cout << "The average of the four highest scores is: ";
+	cout << "\nThe average of the four highest scores is: ";
 	calcAverage(score1, score2, score3, score4, score5);	//function call to calculate average of 4 highest scores
 	cout << endl;
 	system("pause");
@@ -52,13 +52,13 @@ int main()
 void getScore(int count)
 {
 	// Have user enter score
-	cout << "Enter score " << count << ": ";
+	cout << "\nEnter score " << count << ": ";
 	cin >> score;
 
 	while (score < 0 || score > 100)	// validating test score
 	{
 		cout << "\nPlease enter a valid test score.";
-		cout << "Enter score " << count << ": ";
+		cout << "\nEnter score " << count << ": ";
 		cin >> score;
 	}
 }
@@ -68,12 +68,12 @@ void calcAverage(int score1, int score2, int score3, int score4, int score5)
 	double sum, average;
 
 	sum = score1 + score2 + score3 + score4 + score5;	// calculate the total of all 5 scores
-	average = (sum - findLowest()) / 4;		// subtract lowest score from total, then find average
+	average = (sum - findLowest(score1, score2, score3, score4, score5)) / 4;	// subtract lowest score from total, then find average
 
 	cout << average;	// show average
 }
 
-int findLowest()
+int findLowest(int score1, int score2, int score3, int score4, int score5)
 {
 	lowest = score1;	// initializing lowest score
 
@@ -87,5 +87,5 @@ int findLowest()
 	if (score5 < lowest)
 		lowest = score5;
 
-	return lowest;		// return lowest score to calcAverage function
+	return lowest;		// send lowest score to calcAverage function
 }

@@ -90,38 +90,47 @@ void displayValue(float num1, float num2, float num3)
 }
 */
 
+/*
 bool isPrime(int);		//funtion prototype
 
 int main()
 {
-	int value;
+	int value;		// value to be determined if prime or not
 	cin >> value;
-
-	isPrime(value);
-
-
-	if (isPrime == 0)
+	while (value < 1)	// only allowing values greater than or equal to 1
 	{
-		cout << "The number is not prime.\n";
+		cout << "Choose a value greater than or equal to 1.\n";
+		cin >> value;
+	}
+
+	if (isPrime(value) != 0)	// interpreting results from isPrime() function
+	{
+		cout << "The number is prime.\n";
 	}
 	else
-		cout << "The number is prime.\n";
+		cout << "The number is not prime.\n";
 	system("pause");
 	return 0;
 }
 
-bool isPrime(int value)
+bool isPrime(int value)		// function to determine if value is prime
 {
-	int number;
+	if (value <= 3)		// value is prime if 1, 2, or 3
+		return true;
+	else if (value % 2 == 0 || value % 3 == 0)		// testing if value is a multiple of 2 or 3
+		return false;								// if yes, value is not prime
 
-	for (int i = 3; i < sqrt(value); i += 2)
+	// primality test
+	int i = 5;
+
+	while (i*i <= value)
 	{
-		number = value % i;
-		if (number != 0)
+		if (value % i == 0 || value % (i + 2) == 0)
 		{
-			return true;
-		}
-		else
 			return false;
+		}
+		i += 6;
 	}
+	return true;
 }
+*/

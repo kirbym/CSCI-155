@@ -134,3 +134,39 @@ bool isPrime(int value)		// function to determine if value is prime
 	return true;
 }
 */
+
+/*
+// Using a function to divide two numbers
+double divide(double, double);	// function prototype
+
+int main()
+{
+	double arg1,	// first argument
+		arg2,		// second argument
+		result;		// result of division function
+
+	// Ask user to enter two numbers
+	cout << "Enter two numbers and this program will divide the first by the second.\n";
+	cout << "Enter the two numbers separated by a space.\n";
+	cin >> arg1 >> arg2;
+	
+	// If user enters 0 as arg2, display error message
+	if (arg2 != 0.0)
+	{
+		result = divide(arg1, arg2);	// result of division function
+		cout << "\nThe result is " << result << endl;
+	}
+	else
+		cout << "\nIt is not possible to divide by 0.\n";
+	
+	system("pause");
+	return 0;
+}
+
+double divide(double arg1, double arg2)
+{	
+	double quotient = arg1 / arg2;	// divide arg1 by arg2
+
+	return quotient;	// return the quotient
+}
+*/

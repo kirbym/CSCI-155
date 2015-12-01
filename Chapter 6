@@ -185,7 +185,7 @@ double divide(double arg1, double arg2)
 */
 
 /*
-// #10 from other book
+// #10 Present Value (from profs book)
 // Given the future value, interest rate, and numbers of years, calculate the amount of money
 // needed to deposit "today" to reach that value in the alotted time. Use a separate function to complete this.
 // Present value can be calulated by 

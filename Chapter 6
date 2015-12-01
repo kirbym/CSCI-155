@@ -183,3 +183,74 @@ double divide(double arg1, double arg2)
 	return quotient;	// return the quotient
 }
 */
+
+/*
+// #10 from other book
+// Given the future value, interest rate, and numbers of years, calculate the amount of money
+// needed to deposit "today" to reach that value in the alotted time. Use a separate function to complete this.
+// Present value can be calulated by 
+//		P = F / (1 + r)^n
+// where P = present value, F = future value, r = interest rate, n = years
+
+double presentValue(double, double, double);	//function prototype
+
+int main()
+{
+	double futureValue,		//value user wants to reach
+		intRate,			//interest rate on the savings account
+		years;				//how long the account is accruing interest
+
+	char answer;			//allow user to retry program or quit altogether
+
+	cout << "This program can predict how much money you need to deposit today\n";
+	cout << "to achieve a particular future value.";
+	cout << "\nEnter 'Y' to begin, enter 'N' to quit. ";	//asks user to begin or quit
+	cin >> answer;
+
+	while (answer == 'Y' || answer == 'y')		//if user selects 'Y', the rest of the program runs
+	{
+		//ask for future value from user
+		cout << "\nEnter the value you wish to achieve: $";
+		cin >> futureValue;
+		while (futureValue < 0)		//input validation
+		{
+			cout << "\nPlease enter a value greater than or equal to $0.";
+			cout << "\nEnter the value you wish to achieve: $";
+			cin >> futureValue;
+		}
+		//ask for interest rate from user
+		cout << "\nEnter the interest rate on the account (as a decimal): ";
+		cin >> intRate;
+		while (intRate < 0)			//input validation
+		{
+			cout << "\nPlease enter a value greater than or equal to 0.";
+			cout << "\nEnter the interest rate on the account (as a decimal): ";
+			cin >> intRate;
+		}
+		//ask for how many years from user
+		cout << "\nEnter how many years the account will be active: ";
+		cin >> years;
+		while (years < 0)			//input validation
+		{
+			cout << "\nPlease enter a value greater than or equal to 0.";
+			cout << "\nEnter how many years the account will be active: ";
+			cin >> years;
+		}
+		//display result of function
+		cout << "\nYou need to deposit $" << presentValue(futureValue, intRate, years) << endl;
+
+		cout << "\nEnter 'Y' to retry, enter 'N' to quit. ";		//ask user if they want to retry or quit
+		cin >> answer;
+	}
+	return 0;
+}
+
+double presentValue(double futureValue, double intRate, double years)
+{
+	double presentValue;		//value that would need to be deposited to reach the future value
+
+	presentValue = futureValue / pow(1 + intRate, years);	//formula to calculate present value
+
+	return presentValue;
+}
+*/

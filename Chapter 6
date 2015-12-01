@@ -4,6 +4,7 @@
 #include "stdafx.h"
 #include <iostream>
 #include <cmath>
+#include <iomanip>
 using namespace std;
 
 /*	//introduction to functions
@@ -96,10 +97,12 @@ bool isPrime(int);		//funtion prototype
 int main()
 {
 	int value;		// value to be determined if prime or not
+	cout << "Enter a value greater than or equal to 2\n"
+		<< "and this program will determine if the number is prime." << endl;
 	cin >> value;
-	while (value < 1)	// only allowing values greater than or equal to 1
+	while (value < 2)	// only allowing values greater than or equal to 2
 	{
-		cout << "Choose a value greater than or equal to 1.\n";
+		cout << "Choose a value greater than or equal to 2.\n";
 		cin >> value;
 	}
 
@@ -109,27 +112,37 @@ int main()
 	}
 	else
 		cout << "The number is not prime.\n";
+
+	cout << "Here is a list of all prime numbers up to 100." << endl;
+	for (int j = 2; j <= 100; j++)
+	{
+		if (isPrime(j) != 0)
+		{
+			cout << setw(4) << j << "\t";
+		}
+	}
+	cout << endl;
 	system("pause");
 	return 0;
 }
 
 bool isPrime(int value)		// function to determine if value is prime
 {
-	if (value <= 3)		// value is prime if 1, 2, or 3
+	if (value <= 3)		// value is prime if 2 or 3
 		return true;
 	else if (value % 2 == 0 || value % 3 == 0)		// testing if value is a multiple of 2 or 3
 		return false;								// if yes, value is not prime
 
-	// primality test
-	int i = 5;
+	// primality test (test wheter "value" is divisible by any numbers over the interval [2,sqrt(value)]
+	int i = 5;	//already tested 2,3, and intuitively 4
 
-	while (i*i <= value)
+	while (i*i <= value)	//same as i <= sqrt(value)
 	{
-		if (value % i == 0 || value % (i + 2) == 0)
+		if (value % i == 0)
 		{
 			return false;
 		}
-		i += 6;
+		i += 2;
 	}
 	return true;
 }

@@ -254,3 +254,102 @@ double presentValue(double futureValue, double intRate, double years)
 	return presentValue;
 }
 */
+
+/*
+// #11 Stock Profit (from profs book)
+// Calculate the profit of loss from a stock transaction. Use a function to achieve this.
+// Net gain can be calculated by
+//		Profit = ((NS * SP) - SC) - ((NS * PP) + PC)
+// where NS = number of shares, SP = sale price/share, SC = sale commision paid,
+// PP = purchase price/share, PC = purchase commission paid
+// if Profit > 0 ==> sale resulted in a profit, if Profit < 0 ==> sale resulted in a loss
+
+double stockNetGain(int, double, double, double, double);
+
+int main()
+{
+	int nS;		//# of shares
+	double sP,	//sale price/share
+		sC,		//sale commission paid
+		pP,		//purchase price/share
+		pC,		//purchase commission paid
+		result;
+
+	char answer;	//let user decide to continue or not
+
+	cout << "This program can calculate the net gain or loss of a stock transaction." << endl;
+	cout << "Enter 'Y' to begin, or 'N' to quit the program. ";
+	cin >> answer;
+	if (answer == 'N' || answer == 'n')		//allow user to quit program
+		return 0;
+
+	do
+	{
+		//ask for number of shares from user
+		cout << "\nEnter the number of shares: ";
+		cin >> nS;
+		while (nS < 0)		//input validation
+		{
+			cout << "\nValue must be >= 0";
+			cout << "\nEnter the number of shares: ";
+			cin >> nS;
+		}
+		//ask for sale price/share from user
+		cout << "\nEnter the sale price/share: $";
+		cin >> sP;
+		while (sP < 0)		//input validation
+		{
+			cout << "\nValue must be >= 0";
+			cout << "\nEnter the sale price/share: $";
+			cin >> sP;
+		}
+		//ask for sale commission paid from user
+		cout << "\nEnter the sales commission paid: $";
+		cin >> sC;
+		while (sC < 0)		//input validation
+		{
+			cout << "\nValue must be >= 0";
+			cout << "\nEnter the sales commission paid: $";
+			cin >> sC;
+		}
+		//ask for purchase price/share from user
+		cout << "\nEnter the purchase price/share: $";
+		cin >> pP;
+		while (pP < 0)		//input validation
+		{
+			cout << "\nValue must be >= 0";
+			cout << "\nEnter the purchase price/share: $";
+			cin >> pP;
+		}
+		//ask for purchase commission paid from user
+		cout << "\nEnter the purchase commission paid: $";
+		cin >> pC;
+		while (pC < 0)		//input validation
+		{
+			cout << "\nValue must be >= 0";
+			cout << "\nEnter the purchase commission paid: $";
+			cin >> pC;
+		}
+		
+		//display results
+		result = stockNetGain(nS, sP, sC, pP, pC);
+		cout << showpoint << fixed << setprecision(2);
+		cout << "\nThe net worth of the stock transaction is $" << result << endl;
+		
+		//ask user if they want to calculate another transaction
+		cout << "Calculate another stock transaction (Y/N) ? ";
+		cin >> answer;
+		
+	} while (answer == 'Y' || answer == 'y');
+	return 0;
+}
+
+double stockNetGain(int nS, double sP, double sC, double pP, double pC)
+{
+	double netGain;		//net gain or loss of stock transaction
+
+	netGain = ((nS * sP) - sC) - ((nS * pP) + pC);		//formula to calculate net gain
+
+	return netGain;
+}
+*/

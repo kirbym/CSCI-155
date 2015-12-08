@@ -371,43 +371,61 @@ int main()
 
 /*
 //function prototypes
-void getLotteryInfo(int &, int &);
+void getLotteryInfo(int&, int&);
 long int computeWays(int, int);
 long int factorial(int);
 
 int main()
 {
-	int pickFrom,		//# of numbers to pick from
-		numPicks;		//# of numbers to select
-	long int ways;		//# of different possible ways to pick the numbers
+	cout << "This program will tell you your probability of winning \"Little Lotto.\"" << endl;
+	
+	char answer;
 
-	cout << "This program will tell you your probability of "
-		<< "winning \"Little Lotto\". \n";
-	getLotteryInfo(pickFrom, numPicks);
-	ways = computeWays(pickFrom, numPicks);
+	int pickFrom,	//# of #'s to pick from (1-12)
+		numPicks;	//# of #'s to play lotto game
+	long int ways;	//# of possible outcomes
+	double prob;		//probability of winning lotto game
 
-	cout << fixed << showpoint << setprecision(4);
-	cout << "\nYour chance of winning the lottery is "
-		<< "1 chance in " << ways << ".\n";
-	cout << "This is a probability of " << (1.0 / ways) << endl;
-	system("pause");
+	do
+	{
+		getLotteryInfo(pickFrom, numPicks);		//ask user to enter numbers, referencing pickFrom & numPicks
+
+		ways = computeWays(pickFrom, numPicks);	//compute # of possible outcomes with numbers chosen by user
+
+		prob = 1 / static_cast<double>(ways);	//probability of winning
+
+		//display results
+		cout << "Your chance of winning the lottery is 1 chance in " << ways << "." << endl;
+		cout << fixed << showpoint << setprecision(4);
+		cout << "This is a probability of " << prob << "." << endl;
+		cout << endl << "Play again (Y/N)? ";	//ask user if they want to do it again
+		cin >> answer;		//user's selection, 'Y' or 'N'
+		while (answer != 'Y' && answer != 'y' && answer != 'N' && answer != 'n')	//input validation
+		{
+			cout << "Please enter \"Y\" for Yes or \"N\" for No." << endl;
+			cout << "Play again? ";
+			cin >> answer;
+		}
+		cout << endl;
+	} while (answer == 'Y' || answer == 'y');
+
 	return 0;
 }
 
-void getLotteryInfo(int &pickFrom, int &numPicks)
+void getLotteryInfo(int &pickFrom, int &numPicks)	//getting input from user
 {
-	cout << "\nHow many numbers (1-12) are there to pick from? ";
-	cin >> pickFrom;
-	while (pickFrom < 1 || pickFrom > 12)
+	cout << "How many numbers (1-12) are there to pick from? ";
+	cin >> pickFrom;	
+	while (pickFrom < 1 || pickFrom > 12)	//input validation
 	{
-		cout << "There must be between 1 and 12 numbers.\n"
-			<< "How many numbers (1-12) are there to pick from? ";
+		cout << "Please choose a number between 1 and 12." << endl;
+		cout << "How many numbers (1-12) are there to pick from? ";
 		cin >> pickFrom;
 	}
 
 	cout << "How many numbers must you pick to play? ";
 	cin >> numPicks;
-	while (numPicks < 1 || numPicks > pickFrom)
+	while (numPicks < 1 || numPicks > pickFrom)		//input validation
 	{
 		if (numPicks < 1)
 			cout << "You must pick at least one number.\n";
@@ -419,20 +437,20 @@ void getLotteryInfo(int &pickFrom, int &numPicks)
 	}
 }
 
-long int computeWays(int n, int k)
+long int computeWays(int n, int r)	//number of possible outcomes
 {
-	return factorial(n) / (factorial(k) * factorial(n - k));
+	//n choose r = nCr = n! / (r! * (n-r)!)
+	return factorial(n) / (factorial(r) * factorial(n - r));	//nCr, with n = pickFrom, r = numPicks
 }
 
-long int factorial(int number)
+long int factorial(int number)	//method to calculate a factorial of a single number
 {
-	long int factTotal = 1;
+	int factTotal = 1;
 
 	for (int count = number; count >= 1; count--)
 	{
 		factTotal *= count;
 	}
-
 	return factTotal;
 }
 */

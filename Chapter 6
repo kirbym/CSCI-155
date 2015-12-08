@@ -371,7 +371,7 @@ int main()
 
 /*
 //function prototypes
-void getLotteryInfo(int&, int&);
+void getLotteryInfo(int &, int &);
 long int computeWays(int, int);
 long int factorial(int);
 
@@ -392,7 +392,7 @@ int main()
 
 		ways = computeWays(pickFrom, numPicks);	//compute # of possible outcomes with numbers chosen by user
 
-		prob = 1 / static_cast<double>(ways);	//probability of winning
+		prob = 1.0 / static_cast<double>(ways);	//probability of winning
 
 		//display results
 		cout << "Your chance of winning the lottery is 1 chance in " << ways << "." << endl;
@@ -452,5 +452,154 @@ long int factorial(int number)	//method to calculate a factorial of a single num
 		factTotal *= count;
 	}
 	return factTotal;
+}
+*/
+
+/*
+// Ch.6, 22. Star Search 
+//function prototypes
+void getJudgeData(double &);
+double calcScore(double, double, double, double, double);
+double findLowest(double, double, double, double, double);
+double findHighest(double , double, double, double, double);
+
+int main()
+{
+	double s1,	//score #1
+		s2,		//score #2
+		s3,		//score #3
+		s4,		//score #4
+		s5,		//score #5
+		average;	//resulting average of 3 scores
+
+	cout << "After entering 5 scores, this program will drop the lowest and highest scores ";
+	cout << "and average the remaining 3 scores." << endl;
+
+	getJudgeData(s1);	//call function with s1 variable, referencing score
+	getJudgeData(s2);	//		"			 s2			"
+	getJudgeData(s3);	//		"			 s3			"
+	getJudgeData(s4);	//		"			 s4			"
+	getJudgeData(s5);	//		"			 s5			"
+
+	average = calcScore(s1, s2, s3, s4, s5);	//average of 3 scores, dropping lowest & highest
+	//display final results
+	cout << fixed << showpoint << setprecision(3);
+	cout << "The average after dropping the lowest and highest scores is " << average << "." << endl;
+
+	system("pause");
+	return 0;
+}
+
+void getJudgeData(double &score)
+{
+	cout << "Enter the Judge's score: ";
+	cin >> score;	//score input by user which is referenced by s1, s2, etc.
+	while (score < 0 || score > 10)	//input validation
+	{
+		cout << "Enter a score between 0 and 10." << endl;
+		cout << "Enter the Judge's score: ";
+		cin >> score;
+	}
+	cout << endl;
+}
+
+double calcScore(double s1, double s2, double s3, double s4, double s5)
+{
+	double lowest = findLowest(s1, s2, s3, s4, s5), //result of findLowest() function
+		highest = findHighest(s1, s2, s3, s4, s5),	//result of findHighest() function
+		result = (s1 + s2 + s3 + s4 + s5 - lowest - highest) / 3.0;	//subtract low & high, then find average
+
+	return result;
+}
+
+double findLowest(double s1, double s2, double s3, double s4, double s5)
+{
+	double lowest = s1;		//assume lowest score is s1
+	//determine absolute lowest score
+	if (s2 < lowest)
+		lowest = s2;
+	if (s3 < lowest)
+		lowest = s3;
+	if (s4 < lowest)
+		lowest = s4;
+	if (s5 < lowest)
+		lowest = s5;
+
+	return lowest;
+}
+
+double findHighest(double s1, double s2, double s3, double s4, double s5)
+{
+	double highest = s1;	//assume highest score is s1
+	//determine absolute highest score
+	if (s2 > highest)
+		highest = s2;
+	if (s3 > highest)
+		highest = s3;
+	if (s4 > highest)
+		highest = s4;
+	if (s5 > highest)
+		highest = s5;
+
+	return highest;
+}
+*/
+
+/*
+//default arguments example (Section 6.13::pg 353)
+void test(int = 2, int = 4, int = 6);
+int main()
+{
+	test();
+	test(6);
+	test(3, 9);
+	test(1, 5, 7);
+	system("pause");
+	return 0;
+}
+
+void test(int first, int second, int third)
+{
+	first += 3;
+	second += 6;
+	third += 9;
+	cout << first << " " << second << " " << third << endl;
+}
+*/
+
+/*
+//reference parameter variable example (Section 6.13::pg 353)
+void func1(int &, int &);
+void func2(int &, int &, int &);
+void func3(int, int, int);
+int main()
+{
+	int x = 0, y = 0, z = 0;
+
+	cout << x << "  " << y << "  " << z << endl;
+	func1(x, y);
+	cout << x << "  " << y << "  " << z << endl;
+	func2(x, y, z);
+	cout << x << "  " << y << "  " << z << endl;
+	func3(x, y, z);
+	cout << x << "  " << y << "  " << z << endl;
+	system("pause");
+	return 0;
+}
+
+void func1(int &a, int &b)
+{
+	cout << "Enter two numbers: ";
+	cin >> a >> b;
+}
+void func2(int &a, int &b, int &c)
+{
+	b++;
+	c--;
+	a = b + c;
+}
+void func3(int a, int b, int c)
+{
+	a = b - c;
 }
 */

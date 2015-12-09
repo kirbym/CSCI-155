@@ -1,0 +1,238 @@
+// Ch. 8, Rainfall Statistics.cpp : Defines the entry point for the console application.
+
+/*
+This program will analyze a year's precipitation data for a fictional location. The user is tasked with entering the amount of
+rainfall (in inches) for each month of the year starting with month 1 (Jan) up to month 12 (Dec). The program will calculate the total
+rainfall for the year, the average monthly rainfall, determine the driest month, and determine the wettest month. Finally, the program
+will display the data in a comprehensive report.
+*/
+
+#include "stdafx.h"
+#include <iostream>
+#include <string>
+#include <iomanip>
+using namespace std;
+
+//constants for array sizing
+const int NUM_MONTHS = 12;
+const int ROWS = 2;
+
+//function prototypes
+void getData(double [][NUM_MONTHS], int);
+double totalRainfall(double [][NUM_MONTHS], int);
+double averageRainfall(double, int);
+int driestMonth(double [][NUM_MONTHS], int);
+int wettestMonth(double[][NUM_MONTHS], int);
+void displayReport(double, double, int, int, double [][NUM_MONTHS], int);
+
+int main()
+{
+	double total,	//total accumulated rainfall over the year
+		average;	//average monthly rainfall
+	int dry,		//driest month # (1,2,3,...,12)
+		wet,		//wettest month # (1,2,3,...,12)
+		row = 1;	//selected row, corresponds to precipitation data for each month in array
+	
+	//array to store precipitation data
+	//1st row initialized to month # (Jan = 1, Feb = 2, etc.)
+	double rainfallEachMonth[ROWS][NUM_MONTHS] = { {1,2,3,4,5,6,7,8,9,10,11,12}, {} };
+
+	getData(rainfallEachMonth, row);	//ask user to input data and store in rainfallEachMonth[][]
+
+	total = totalRainfall(rainfallEachMonth, row);	//calculate total rainfall
+
+	average = averageRainfall(total, NUM_MONTHS);	//calculate the monthly average rainfall
+
+	dry = driestMonth(rainfallEachMonth, row);		//determine month with least amount of rain
+
+	wet = wettestMonth(rainfallEachMonth, row);		//determine month with most amount of rain
+
+	displayReport(total, average, dry, wet, rainfallEachMonth, row);	//display full precipitation report
+
+	system("pause");
+    return 0;
+}
+
+void getData(double enterData[][NUM_MONTHS], int row)	//ask for input from user and store in array
+{
+	double rainfall;	//amount of rainfall to be input by user
+
+	for (int j = 0; j < NUM_MONTHS; j++)
+	{
+		cout << "Enter rainfall for month " << (j + 1) << ": ";
+		cin >> rainfall;
+		while (rainfall < 0)	//input validation
+		{
+			cout << "You must enter a value greater than or equal to 0." << endl;
+			cout << "Enter rainfall(in inches) for month " << j + 1 << ": ";
+			cin >> rainfall;
+		}
+		enterData[row][j] = rainfall;	//assign rainfall values into correct element spots
+	}
+}//end of getData()
+
+double totalRainfall(double calcTotal[][NUM_MONTHS], int row)	//find the total amount of rainfall
+{
+	double total = 0;	//initialize accumulator
+
+	for (int j = 0; j < NUM_MONTHS; j++)
+	{
+		total += calcTotal[row][j];		//adding all the rainfall elements
+	}
+	
+	return total;
+}//end of totalRainfall()
+
+double averageRainfall(double sum, int numOfMonths)		//determining the average rainfall
+{
+	return sum / static_cast<double>(numOfMonths);		//total rainfall divided by number of months
+}//end of averageRainfall()
+
+int driestMonth(double dry[][NUM_MONTHS], int row)		//determining the driest month
+{
+	double driest = dry[row][0],	//assume first rainfall value is driest
+		driestMonth = dry[0][0];	//assume first month is driest
+
+	for (int j = 0; j < NUM_MONTHS; j++)
+	{
+		if (dry[row][j] < driest)	//checking which month has lowest value
+		{
+			driest = dry[row][j];		//determine lowest rainfall value
+			driestMonth = dry[0][j];	//match lowest rainfall value to corresponding month
+		}
+	}
+	return driestMonth;		//return the driest month # (1,2,...,12) 
+}//end of driestMonth()
+
+int wettestMonth(double wet[][NUM_MONTHS], int row)		//determining the wettest month
+{
+	double wettest = wet[row][0],	//assume first rainfall is wettest
+		wettestMonth = wet[0][0];	//assume first month is wettest
+	
+	for (int j = 0; j < NUM_MONTHS; j++)
+	{
+		if (wet[row][j] > wettest)	//checking which month has highest value
+		{
+			wettest = wet[row][j];		//determine highest rainfall value
+			wettestMonth = wet[0][j];	//match highest rainfall value to corresponding month
+		}
+	}
+	
+	return wettestMonth;	//return the wettest month # (1,2,...,12)
+}//end of wettestMonth()
+
+void displayReport(double total, double average, int dry, int wet, double rainfall[][NUM_MONTHS], int row)	//display the information
+{
+	string header = "Precipitation Report: Neversnows County, 2010";	//header of report for specific location and year
+	int numChars = header.length();		//# of chars in header
+	string line;				//}
+	line.assign('-', numChars);	//} line of "-" which is numChars long
+
+	cout << endl << header << endl << line << endl;
+	cout << fixed << showpoint << setprecision(2);
+	cout << "Total accumulated rainfall for the year: " << total << " inches" << endl;
+	cout << "Average monthly rainfall : " << average << " inches" << endl;
+
+	switch (dry)	//match driest month # with specialized statement and corresponding rainfall amount
+	{				// 1 --> Jan, 2 --> Feb, etc. 
+	case 1:
+		cout << "The least rain fell in January with ";
+		cout << rainfall[row][dry-1] << " inches" << endl;
+		break;
+	case 2:
+		cout << "The least rain fell in February with ";
+		cout << rainfall[row][dry-1] << " inches" << endl;
+		break;
+	case 3:
+		cout << "The least rain fell in March with ";
+		cout << rainfall[row][dry - 1] << " inches" << endl;
+		break;
+	case 4:
+		cout << "The least rain fell in April with ";
+		cout << rainfall[row][dry - 1] << " inches" << endl;
+		break;
+	case 5:
+		cout << "The least rain fell in May with ";
+		cout << rainfall[row][dry - 1] << " inches" << endl;
+		break;
+	case 6:
+		cout << "The least rain fell in June with ";
+		cout << rainfall[row][dry - 1] << " inches" << endl;
+		break;
+	case 7:
+		cout << "The least rain fell in July with ";
+		cout << rainfall[row][dry - 1] << " inches" << endl;
+		break;
+	case 8:
+		cout << "The least rain fell in August with ";
+		cout << rainfall[row][dry - 1] << " inches" << endl;
+		break;
+	case 9:
+		cout << "The least rain fell in September with ";
+		cout << rainfall[row][dry - 1] << " inches" << endl;
+		break;
+	case 10:
+		cout << "The least rain fell in October with ";
+		cout << rainfall[row][dry - 1] << " inches" << endl;
+		break;
+	case 11:
+		cout << "The least rain fell in November with ";
+		cout << rainfall[row][dry - 1] << " inches" << endl;
+		break;
+	case 12:
+		cout << "The least rain fell in December with ";
+		cout << rainfall[row][dry - 1] << " inches" << endl;
+	}
+	
+	switch (wet)	//match wettest month # with specialized statement and corresponding rainfall amount
+	{				// 1 --> Jan, 2 --> Feb, etc.
+	case 1:
+		cout << "The most rain fell in January with ";
+		cout << rainfall[row][wet - 1] << " inches" << endl;
+		break;
+	case 2:
+		cout << "The most rain fell in February with ";
+		cout << rainfall[row][wet - 1] << " inches" << endl;
+		break;
+	case 3:
+		cout << "The most rain fell in March with ";
+		cout << rainfall[row][wet - 1] << " inches" << endl;
+		break;
+	case 4:
+		cout << "The most rain fell in April with ";
+		cout << rainfall[row][wet - 1] << " inches" << endl;
+		break;
+	case 5:
+		cout << "The most rain fell in May with ";
+		cout << rainfall[row][wet - 1] << " inches" << endl;
+		break;
+	case 6:
+		cout << "The most rain fell in June with ";
+		cout << rainfall[row][wet - 1] << " inches" << endl;
+		break;
+	case 7:
+		cout << "The most rain fell in July with ";
+		cout << rainfall[row][wet - 1] << " inches" << endl;
+		break;
+	case 8:
+		cout << "The most rain fell in August with ";
+		cout << rainfall[row][wet - 1] << " inches" << endl;
+		break;
+	case 9:
+		cout << "The most rain fell in September with ";
+		cout << rainfall[row][wet - 1] << " inches" << endl;
+		break;
+	case 10:
+		cout << "The most rain fell in October with ";
+		cout << rainfall[row][wet - 1] << " inches" << endl;
+		break;
+	case 11:
+		cout << "The most rain fell in November with ";
+		cout << rainfall[row][wet - 1] << " inches" << endl;
+		break;
+	case 12:
+		cout << "The most rain fell in December with ";
+		cout << rainfall[row][wet - 1] << " inches" << endl;
+	}
+	cout << endl;
+}//end of displayReport()

@@ -70,3 +70,22 @@ void printScores(int myArr[][COLUMNS], int rows)
 	}
 }
 */
+
+/*
+const string month[] = { "January", "February", "March", "April", "May", "June", "July",
+"August", "September", "October", "November", "December"};
+
+int main()
+{
+	auto array_length = end(month) - begin(month);	//find the number of elements in array
+
+	for (int i = 0; i < array_length; i++)
+	{
+		cout << month[i] << ", ";
+	}
+
+	cout << endl;
+	system("pause");
+	return 0;
+}
+*/

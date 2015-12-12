@@ -7,6 +7,7 @@ rainfall for the year, the average monthly rainfall, determine the driest month,
 will display the data in a comprehensive report.
 */
 
+/*
 #include "stdafx.h"
 #include <iostream>
 #include <string>
@@ -236,3 +237,124 @@ void displayReport(double total, double average, int dry, int wet, double rainfa
 	}
 	cout << endl;
 }//end of displayReport()
+*/
+
+#include "stdafx.h"
+#include <iostream>
+#include <vector>	//needed for vectors
+#include <string>
+#include <iomanip>
+using namespace std;
+
+//function prototypes
+void getData(vector<double> &);
+double totalRainfall(vector<double>);
+double averageRainfall(vector<double>);
+int driestMonth(vector<double>);
+int wettestMonth(vector<double>);
+void displayReport(vector<double>, double, double, int, int);
+
+vector<string> months{ "January", "February", "March", "April", "May",
+"June", "July", "August", "September", "October", "November", "December" };	//vector to hold the 12 months
+
+const int NUM_MONTHS = 12;	//number of months
+
+int main()
+{
+	vector<double> rainfall(NUM_MONTHS);	//12 element vector to hold precipitation amount
+
+	double total,	//total rainfall for the year
+		average;	//average monthly rainfall
+	int driest,		//index # of month with least amount of rain
+		wettest;	//index # of month with greatest amount of rain
+
+	getData(rainfall);	//ask user to input data
+
+	total = totalRainfall(rainfall);	//calculate total rainfall
+	average = averageRainfall(rainfall);	//calculate average monthly rainfall
+	driest = driestMonth(rainfall);		//determine the driest month (index #)
+	wettest = wettestMonth(rainfall);	//determine the wettest month (index #)
+
+	displayReport(rainfall, total, average, driest, wettest);	//display report
+
+	cout << endl;
+	system("pause");
+	return 0;
+}
+
+void getData(vector<double> &rainAmount)	//acquiring input from user
+{
+	for (int i = 0; i < rainAmount.size(); i++)
+	{
+		cout << "Enter rainfall amount, in inches, for " << months[i] << ": ";
+		cin >> rainAmount[i];	//rainfall amount
+		while (rainAmount[i] < 0)	//input validation
+		{
+			cout << "Enter a value greater than or equal to zero." << endl;
+			cout << "Enter rainfall amount, in inches, for " << months[i] << ": ";
+			cin >> rainAmount[i];
+		}
+	}
+}
+
+double totalRainfall(vector<double> totalRain)	//calculating total rainfall
+{
+	double total = 0.0;		//accumulator set to 0.0
+
+	for (int i = 0; i < totalRain.size(); i++)
+	{
+		total += totalRain[i];	//adding all elements of the vector
+	}
+
+	return total;
+}
+
+double averageRainfall(vector<double> avgRain)		//calculating average rainfall
+{
+	double average;		//average amount of rainfall
+
+	average = totalRainfall(avgRain) / avgRain.size();	//total rain divided by size of vector
+
+	return average;
+}
+
+int driestMonth(vector<double> rainAmount)	//determining which month had least amount of rain
+{
+	int driestMonth = 0;	//assume first month has least
+
+	for (int j = 1; j < rainAmount.size(); j++)
+	{
+		if (rainAmount[j] < rainAmount[driestMonth])	//compare the months with each other to determine driest
+		{
+			driestMonth = j;	//index # for driest month
+		}
+	}
+
+	return driestMonth;
+}
+
+int wettestMonth(vector<double> rainAmount)		//determining which month had most amount of rain
+{
+	int wettestMonth = 0;	//assume first month has greatest
+
+	for (int k = 1; k < rainAmount.size(); k++)
+	{
+		if (rainAmount[k] > rainAmount[wettestMonth])	//compare the months with each other to determine wettest
+		{
+			wettestMonth = k;	//index # of wettest
+		}
+	}
+
+	return wettestMonth;
+}
+
+void displayReport(vector<double> rainDisplay, double total, double average, int driest, int wettest)	//displaying information
+{
+	cout << fixed << showpoint << setprecision(2);
+
+	cout << "\n\n\tPrecipitation Report for Neversnows County, 2010\n\n";
+	cout << "Total rainfall: " << total << " inches" << endl;
+	cout << "Average rainfall: " << average << " inches" << endl;
+	cout << "The least rain fell in " << months[driest] << " with " << rainDisplay[driest] << " inches" << endl;
+	cout << "The most rain fell in " << months[wettest] << " with " << rainDisplay[wettest] << " inches" << endl;
+}

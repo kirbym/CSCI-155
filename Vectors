@@ -1,0 +1,101 @@
+// Vectors.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include <vector>	//needed for vectors
+#include <algorithm>	//needed for sort function
+using namespace std;
+
+//function prototypes
+void getData(vector<int> &, int);
+void removeData(vector<int> &, int);
+
+int main()
+{
+	int size,	//size of vector
+		popBack;	//how many elements to pop back from the vector
+
+	vector<int> myVector;	//initialize empty vector
+
+	cout << "How many elements do you want the vector to have? ";
+	cin >> size;	//size of vector
+	while (size < 0)	//input validation
+	{
+		cout << "The vector cannot have less than 0 elements." << endl;
+		cout << "Elements? ";
+		cin >> size;
+	}
+
+	getData(myVector, size);	//function to input data into vector
+
+	//show original vector elements
+	cout << "myVector original:" << endl;
+	for (int i = 0; i < size; i++)
+	{
+		cout << myVector[i] << "  ";
+	}
+
+	//sort and show the vector elements
+	cout << endl << "myVector sorted:" << endl;
+
+	sort(myVector.begin(), myVector.begin() + size);	//sort function
+
+	//print sorted vector
+	for (int j = 0; j < size; j++)
+	{
+		cout << myVector[j] << "  ";
+	}
+	
+	//use .pop_back() member function to erase a selected number of elements
+	cout << "\nHow many elements do you want to pop back? ";
+	cin >> popBack;	//how many elements to pop back
+	while (popBack > size)	//input validation
+	{
+		cout << "You must pick a value smaller than the size of the vector.\n";
+		cout << "pop back? ";
+		cin >> popBack;
+	}
+
+	removeData(myVector, popBack);	//pop back the elements
+
+	//print vector after getting rid of some elements
+	cout << endl << "myVector after poping back elements:" << endl;
+	for (int k = 0; k < (popBack + 1); k++)
+	{
+		cout << myVector[k] << "  ";
+	}
+
+	//use .clear() member function to erase the elements in the vector
+	cout << "\nNow clearing the vector." << endl;
+	myVector.clear();
+
+	//use .empty() member function to determine if vector is empty
+	if (myVector.empty())
+	{
+		cout << "\nThe vector is now empty.\n";
+	}
+
+	system("pause");
+    return 0;
+}
+
+void getData(vector<int> &addElements, int size)	//function to add elements to vector
+{
+	int value;	//value to be pushed back onto the vector
+
+	for (int i = 0; i < size; i++)
+	{
+		cout << "Enter element " << i + 1 << ": ";
+		cin >> value;
+		addElements.push_back(value);	//use .push_back(value) member function, referencing myVector, to add elements
+	}									//onto the vector
+}
+
+void removeData(vector<int> &removeElements, int popBack)	//function to remove a number of elements
+{
+	for (int i = 0; i < popBack; i++)
+	{
+		removeElements.pop_back();	//use .pop_back() member function, referencing myVector, to remove elements
+	}
+}

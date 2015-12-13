@@ -40,6 +40,10 @@ int main()
 	cout << endl << "myVector sorted:" << endl;
 
 	sort(myVector.begin(), myVector.begin() + size);	//sort function
+	// or sort(myVector.begin(), myVector.end())
+	// for selected ranges:
+	// sort(myVector.begin() + a, myVector.begin() + b) where a, b, are constant integers and a < b
+	// sort(myVector.begin() + c, myVector.end()) where c is a constant integer
 
 	//print sorted vector
 	for (int j = 0; j < size; j++)
@@ -61,7 +65,7 @@ int main()
 
 	//print vector after getting rid of some elements
 	cout << endl << "myVector after poping back elements:" << endl;
-	for (int k = 0; k < (popBack + 1); k++)
+	for (int k = 0; k < size - popBack; k++)
 	{
 		cout << myVector[k] << "  ";
 	}
